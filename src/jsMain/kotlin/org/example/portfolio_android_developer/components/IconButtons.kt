@@ -81,14 +81,6 @@ enum class SocialIcon(
         icon = Res.Icon.GITLAB_LIGHT,
         link = "https://gitlab.com/Mahmud24"
     ),
-//    Instagram(
-//        icon = Res.Icon.INSTAGRAM,
-//        link = "https://www.instagram.com/stevdza_san"
-//    ),
-//    InstagramLight(
-//        icon = Res.Icon.INSTAGRAM_LIGHT,
-//        link = "https://www.instagram.com/stevdza_san"
-//    )
     Telegram(
         icon = Res.Icon.TELEGRAM,
         link = "https://t.me/android_dev_05"
