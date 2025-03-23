@@ -42,12 +42,13 @@ fun ProfileCard(
                     Res.Theme.DARK_BLUE.color
             ),
     ) {
+
+        PhotoBlock(
+            breakpoint = breakpoint
+        )
         InfoBlock(
             breakpoint = breakpoint,
             colorMode = colorMode
-        )
-        PhotoBlock(
-            breakpoint = breakpoint
         )
     }
 }

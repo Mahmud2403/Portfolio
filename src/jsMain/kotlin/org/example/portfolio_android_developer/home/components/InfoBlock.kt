@@ -5,8 +5,10 @@ import org.example.portfolio_android_developer.components.IconButton
 import org.example.portfolio_android_developer.components.SocialIcon
 import org.example.portfolio_android_developer.util.Res
 import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.JustifyContent
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.Transition
+import com.varabyte.kobweb.compose.dom.svg.SVGEdgeMode
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -22,6 +24,9 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.window
+import org.example.portfolio_android_developer.components.ToolCard
+import org.example.portfolio_android_developer.components.ToolIcon
+import org.jetbrains.compose.web.css.FlexWrap
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
@@ -36,7 +41,7 @@ fun InfoBlock(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(all = 50.px),
+            .padding(leftRight = 50.px),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = if (breakpoint <= Breakpoint.MD) Alignment.CenterHorizontally else Alignment.Start
     ) {
@@ -81,8 +86,8 @@ fun InfoBlock(
                 .fontSize(14.px)
                 .color(if (colorMode.isLight) Colors.Black else Colors.White)
                 .opacity(50.percent)
-                .lineHeight(2)
-                .margin(bottom = 36.px)
+                .lineHeight(1.5)
+                .margin(bottom = 12.px)
                 .textAlign(
                     if (breakpoint <= Breakpoint.SM) TextAlign.Center
                     else TextAlign.Start
@@ -90,11 +95,47 @@ fun InfoBlock(
             text = Res.String.ABOUT_ME
         )
 
+        SpanText(
+            modifier = Modifier
+                .fontFamily(Res.String.ROBOTO_REGULAR)
+                .fontSize(14.px)
+                .color(if (colorMode.isLight) Colors.Black else Colors.White)
+                .textAlign(
+                    if (breakpoint <= Breakpoint.SM) TextAlign.Center
+                    else TextAlign.Start
+                ),
+            text = Res.String.DEVELOPMENT_TOOLS
+        )
+
+        Row(
+            modifier = Modifier
+                .gap(8.px)
+                .textAlign(
+                    if (breakpoint <= Breakpoint.SM) TextAlign.Center
+                    else TextAlign.Start
+                )
+                .flexWrap(FlexWrap.Wrap)
+                .padding(bottom = 10.px),
+            horizontalArrangement = if (breakpoint <= Breakpoint.SM) Arrangement.Center else Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            ToolIcon.entries.forEach {
+                ToolCard(
+                    backgroundColor = it.background,
+                    tool = it.tool,
+                    icon = if (colorMode.isLight) it.icon
+                    else it.iconLight,
+                    breakpoint = breakpoint,
+                    colorMode = colorMode,
+                )
+            }
+        }
+
         Button(
             modifier = Modifier
                 .onMouseOver { isHovered = true }
                 .onMouseOut { isHovered = false }
-                .margin(bottom = 50.px),
+                .margin(bottom = 18.px),
             size = ButtonSize.LG,
             onClick = { window.location.href = Res.String.MY_EMAIL }
         ) {
