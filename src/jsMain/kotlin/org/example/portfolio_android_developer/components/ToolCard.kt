@@ -115,7 +115,7 @@ enum class ToolIcon(val icon: String? = null, val iconLight: String? = null, val
         background = Res.Colors.ROOM.color
     ),
     COIL(
-        tool = "Flow",
+        tool = "Coil",
         background = Res.Colors.COIL.color
     ),
     GIT(
